@@ -1,0 +1,10 @@
+{
+  "name": "jsRojekti",
+  "version": "0.0.1",
+  "devDependencies": {
+    "browser-sync": "^2.18.8"
+  },
+  "scripts": {
+    "bsync": "browser-sync start --server --files \"**.*\""
+  }
+}
