@@ -16,14 +16,27 @@
 </head>
 <body>
 
-	<!-- func selct -->
-	<div>
-		<select id="seleBox" onchange="selectChanged()">
-		</select>
-		<div id="inputs"></div>
-        <textarea id="output"></textarea>
-        <button id="calc" onclick="eval()">c</button>
+	<div id="numbers" class="numbers">
+		
+		<!-- func selct -->
+		<div>
+			<select id="seleBox" onchange="selectChanged()">
+			</select>
+		</div>
+
+		<div id="inputs">
+		</div>
+
 	</div>
-	<script src="js.js"></script>
+
+	<div id="output-div" class="output">
+
+	<textarea id="output" rows="9" cols="24" readonly></textarea>
+
+        <button onclick="eval()">=</button>
+	</div>
+
+
+    <script src="js.js"></script>
 </body>
 </html>

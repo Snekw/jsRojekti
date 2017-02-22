@@ -3,13 +3,13 @@ var funcs = [{
 	numVar: 2,
 	group: 'test group',
   inputs: ['t', 't2'],
-	func: function(inputs){console.log(inputs); return 1;}
+	func: function(inputs){return 1;}
 },{
 	name:'t2',
 	numVar: 3,
   group: 'test group2',
   inputs: ['t', 't2', 't3', 't4'],
-	func: function(inputs){console.log('nuuh');}
+	func: function(inputs){return 2;}
 }];
 
 var seleBox = document.getElementById('seleBox');
@@ -99,7 +99,7 @@ function eval() {
 
   var res = f.func(inputs);
 
-  output.value += '\n'+res.toString();
+  output.value += '\n' + res.toString();
 }
 
 //Load default selection
