@@ -15,22 +15,27 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-	
-	<div id="boxes">
+
+	<div id="numbers" class="numbers">
+		
+		<!-- func selct -->
+		<div>
+			<select id="seleBox" onchange="selectChanged(this)">
+			</select>
+		</div>
+
+		<div id="inputs">
+		</div>
+
+		<script src="js.js"></script>
+
 	</div>
-	<!-- func selct -->
-	<div>
-		<select id="seleBox" onchange="selectChanged(this)">
-			<optgroup label="s1">
-			  <option value="volvo">Toyota</option>
-			  <option value="saab">Saab</option>
-			</optgroup>
-			<optgroup label="s2">
-			  <option value="mercedes">Mercedes</option>
-			  <option value="audi">Audi</option>
-			</optgroup>
-		</select>
+
+	<div id="output-div" class="output">
+
+	<textarea id="output" rows="9" cols="24" readonly></textarea>
+
 	</div>
-	<script src="js.js"></script>
+
 </body>
 </html>
