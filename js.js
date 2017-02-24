@@ -73,15 +73,21 @@ var funcs = [
   }
 ];
 
+//The selction box
 var seleBox = document.getElementById('seleBox');
+//Input div
 var inputs = document.getElementById('inputs');
+//Output textarea
 var output = document.getElementById('output');
+
+//Group array used for creation of inputs
 var groups = [];
 
 
 //Loop through all of the functions and categorize them
 for (var i = 0; i < funcs.length; i++) {
   var found = false;
+  //Look for exisiting group
   for (var d = 0; d < groups.length; d++) {
     if (groups[d].name == funcs[i].group) {
       found = true;
@@ -89,12 +95,14 @@ for (var i = 0; i < funcs.length; i++) {
     }
   }
   if (!found) {
+	//Group not found create a new group
     var t = {
       name: funcs[i].group,
       funcs: [funcs[i]]
     };
     groups.push(t);
   } else {
+	//Group found add function to the groups functions
     for (var x = 0; x < groups.length; x++) {
       if (groups[x].name == funcs[i].group) {
         groups[x].funcs.push(funcs[i]);
@@ -104,16 +112,19 @@ for (var i = 0; i < funcs.length; i++) {
   }
 }
 
-//Create option groups and options
+//Create option groups and options for the selection box
 for (var i = 0; i < groups.length; i++) {
+  //Create a new group
   var nGroup = document.createElement("optgroup");
   nGroup.label = groups[i].name;
+  //Create options inside the group
   for (var d = 0; d < groups[i].funcs.length; d++) {
     var nOpt = document.createElement("option");
     nOpt.value = groups[i].funcs[d].name;
     nOpt.innerHTML = groups[i].funcs[d].name;
     nGroup.appendChild(nOpt);
   }
+  //Add 
   seleBox.appendChild(nGroup);
 }
 
@@ -133,21 +144,31 @@ function selectChanged() {
   var f = getSelectedFunction();
   //Delete old input boxes
   inputs.innerHTML = "";
-
   //Generate new input boxes
   for (var i = 0; i < f.inputs.length; i++) {
     var nLabel = document.createElement('label');
     var nInput = document.createElement('input');
     var nLabelUnit = document.createElement('label');
-    nLabel.setAttribute('for', 'in' + i);
-    nLabelUnit.setAttribute('for', 'in' + i);
+	var nDiv = document.createElement('div');
+	var nDiv2 = document.createElement('div');
+	nDiv.className += 'form-group';
+	nDiv2.className += 'col-sm-8';
     nLabelUnit.innerHTML = f.inputs[i].unit || 'NA';
+	nLabelUnit.className += 'col-sm-2 control-label';
     nLabel.innerHTML = f.inputs[i].name;
+	nLabel.className += 'col-sm-2 control-label';
     nInput.value = f.inputs[i].defVal || 0;
+	nInput.className += 'form-control';
     nInput.id = 'n' + i;
-    inputs.appendChild(nLabel);
-    inputs.appendChild(nInput);
-    inputs.appendChild(nLabelUnit);
+	nDiv.appendChild(nLabel);
+	nDiv2.appendChild(nInput);
+	nDiv.appendChild(nDiv2);
+	nDiv.appendChild(nDiv2);
+	nDiv.appendChild(nLabelUnit);
+	inputs.appendChild(nDiv);
+//    inputs.appendChild(nLabel);
+//    inputs.appendChild(nInput);
+//    inputs.appendChild(nLabelUnit);
     var br = document.createElement('br');
     inputs.appendChild(br);
   }
@@ -159,13 +180,25 @@ function eval() {
   var inputs = [];
   for (var i = 0; i < f.inputs.length; i++) {
     var v = document.getElementById('n' + i);
+	v.value.replace(',','.');
     inputs.push(v.value);
   }
 
   var res = f.func(inputs);
 
   output.value += '\n' + res.toString() + ' ' + f.retUnit;
+  output.scrollTop = output.scrollHeight;
 }
+
+function sclear(){
+	document.getElementById('output').value = '';
+}
+
+document.addEventListener('keyup', function(e){
+	if(e.key == 'Enter'){
+		eval();
+	}
+});
 
 //Load default selection
 selectChanged(seleBox);
