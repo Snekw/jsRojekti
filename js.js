@@ -95,14 +95,14 @@ for (var i = 0; i < funcs.length; i++) {
     }
   }
   if (!found) {
-	//Group not found create a new group
+    //Group not found create a new group
     var t = {
       name: funcs[i].group,
       funcs: [funcs[i]]
     };
     groups.push(t);
   } else {
-	//Group found add function to the groups functions
+    //Group found add function to the groups functions
     for (var x = 0; x < groups.length; x++) {
       if (groups[x].name == funcs[i].group) {
         groups[x].funcs.push(funcs[i]);
@@ -151,31 +151,31 @@ function selectChanged() {
     var nLabel = document.createElement('label');
     var nInput = document.createElement('input');
     var nLabelUnit = document.createElement('label');
-	var nDiv = document.createElement('div');
-	var nDiv2 = document.createElement('div');
-	
-	nDiv.className += 'form-group';
-	
-	nDiv2.className += 'col-sm-8';
-	
+    var nDiv = document.createElement('div');
+    var nDiv2 = document.createElement('div');
+
+    nDiv.className += 'form-group';
+
+    nDiv2.className += 'col-sm-8';
+
     nLabel.innerHTML = f.inputs[i].name + ':';
-	nLabel.className += 'col-sm-2 control-label';
-	
+    nLabel.className += 'col-sm-2 control-label';
+
     nLabelUnit.innerHTML = f.inputs[i].unit || 'NA';
-	nLabelUnit.className += 'col-sm-2 control-label';
-	
+    nLabelUnit.className += 'col-sm-2 control-label';
+
     nInput.value = f.inputs[i].defVal || 0;
-	nInput.className += 'form-control';
+    nInput.className += 'form-control';
     nInput.id = 'n' + i;
-	
-	nDiv.appendChild(nLabel);
-	nDiv2.appendChild(nInput);
-	nDiv.appendChild(nDiv2);
-	nDiv.appendChild(nDiv2);
-	nDiv.appendChild(nLabelUnit);
-	
-	inputs.appendChild(nDiv);
-	
+
+    nDiv.appendChild(nLabel);
+    nDiv2.appendChild(nInput);
+    nDiv.appendChild(nDiv2);
+    nDiv.appendChild(nDiv2);
+    nDiv.appendChild(nLabelUnit);
+
+    inputs.appendChild(nDiv);
+
     var br = document.createElement('br');
     inputs.appendChild(br);
   }
@@ -187,8 +187,8 @@ function eval() {
   var inputs = [];
   for (var i = 0; i < f.inputs.length; i++) {
     var v = document.getElementById('n' + i);
-	v.value.replace(',','.');
-    inputs.push(v.value);
+    var val = v.value.replace(',', '.');
+    inputs.push(val);
   }
 
   var res = f.func(inputs);
@@ -197,14 +197,14 @@ function eval() {
   output.scrollTop = output.scrollHeight;
 }
 
-function sclear(){
-	document.getElementById('output').value = '';
+function sclear() {
+  document.getElementById('output').value = '';
 }
 
-document.addEventListener('keyup', function(e){
-	if(e.key == 'Enter'){
-		eval();
-	}
+document.addEventListener('keyup', function (e) {
+  if (e.key == 'Enter') {
+    eval();
+  }
 });
 
 //Load default selection
