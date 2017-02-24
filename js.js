@@ -148,6 +148,7 @@ function selectChanged() {
   inputs.innerHTML = "";
   //Generate new input boxes
   for (var i = 0; i < f.inputs.length; i++) {
+    //The elements we need to show the inputs
     var nLabel = document.createElement('label');
     var nInput = document.createElement('input');
     var nLabelUnit = document.createElement('label');
@@ -168,12 +169,14 @@ function selectChanged() {
     nInput.className += 'form-control';
     nInput.id = 'n' + i;
 
+    //Add the elements in correct order
     nDiv.appendChild(nLabel);
     nDiv2.appendChild(nInput);
     nDiv.appendChild(nDiv2);
     nDiv.appendChild(nDiv2);
     nDiv.appendChild(nLabelUnit);
 
+    //Add the div into the view
     inputs.appendChild(nDiv);
 
     var br = document.createElement('br');
@@ -185,22 +188,27 @@ function eval() {
   var f = getSelectedFunction();
 
   var inputs = [];
+  //Loop trough the inputs we have and place the value to array
   for (var i = 0; i < f.inputs.length; i++) {
     var v = document.getElementById('n' + i);
     var val = v.value.replace(',', '.');
     inputs.push(val);
   }
 
+  //Call the function that actually calculates our value
   var res = f.func(inputs);
 
+  //Display value
   output.value += '\n' + res.toString() + ' ' + f.retUnit;
   output.scrollTop = output.scrollHeight;
 }
 
+//Clear the output box
 function sclear() {
   document.getElementById('output').value = '';
 }
 
+//Add event listener to do the calculation
 document.addEventListener('keyup', function (e) {
   if (e.key == 'Enter') {
     eval();
