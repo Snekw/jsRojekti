@@ -128,9 +128,11 @@ for (var i = 0; i < groups.length; i++) {
   seleBox.appendChild(nGroup);
 }
 
+//Get the function object associated with the selected function
 function getSelectedFunction() {
   var f = {};
   var ele = seleBox;
+  //Go trough the available functions and 
   for (var i = 0; i < funcs.length; i++) {
     if (funcs[i].name == ele[ele.selectedIndex].text) {
       f = funcs[i];
@@ -151,24 +153,29 @@ function selectChanged() {
     var nLabelUnit = document.createElement('label');
 	var nDiv = document.createElement('div');
 	var nDiv2 = document.createElement('div');
+	
 	nDiv.className += 'form-group';
+	
 	nDiv2.className += 'col-sm-8';
+	
+    nLabel.innerHTML = f.inputs[i].name + ':';
+	nLabel.className += 'col-sm-2 control-label';
+	
     nLabelUnit.innerHTML = f.inputs[i].unit || 'NA';
 	nLabelUnit.className += 'col-sm-2 control-label';
-    nLabel.innerHTML = f.inputs[i].name;
-	nLabel.className += 'col-sm-2 control-label';
+	
     nInput.value = f.inputs[i].defVal || 0;
 	nInput.className += 'form-control';
     nInput.id = 'n' + i;
+	
 	nDiv.appendChild(nLabel);
 	nDiv2.appendChild(nInput);
 	nDiv.appendChild(nDiv2);
 	nDiv.appendChild(nDiv2);
 	nDiv.appendChild(nLabelUnit);
+	
 	inputs.appendChild(nDiv);
-//    inputs.appendChild(nLabel);
-//    inputs.appendChild(nInput);
-//    inputs.appendChild(nLabelUnit);
+	
     var br = document.createElement('br');
     inputs.appendChild(br);
   }
