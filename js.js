@@ -62,13 +62,38 @@ var funcs = [
     name: 'Suora virtajohdin B=(μ0/2*π*r)*I',
     numVar: 2,
     group: 'Magneettivuon tiheys',
-    inputs: [{name: 'r', unit: 'M'}, {name: 'I', unit: 'A'}],
+    inputs: [{name: 'r', unit: 'm'}, {name: 'I', unit: 'A'}],
     retUnit: 'T',
     func: function (inputs) {
       var r = parseFloat(inputs[0]);
       var i = parseFloat(inputs[1]);
-      var u = 1.2566371;
+      var u = 1.2566371 * Math.pow(10,-6);
       return (u / (2 * Math.PI * r) * i);
+    }
+  },{
+    name: 'Ympyräjohdin, keskipisteessä B=(μ0/2*r)*I',
+    numVar: 2,
+    group: 'Magneettivuon tiheys',
+    inputs: [{name: 'r', unit: 'm'}, {name: 'I', unit: 'A'}],
+    retUnit: 'T',
+    func: function (inputs) {
+      var r = parseFloat(inputs[0]);
+      var i = parseFloat(inputs[1]);
+      var u = 1.2566371 * Math.pow(10,-6);
+      return (u / (2 * r) * i);
+    }
+  },{
+    name: 'Pitkä käämi, sisällä B=N*(μ0/l)*I',
+    numVar: 2,
+    group: 'Magneettivuon tiheys',
+    inputs: [{name: 'N', unit: 'kierr'}, {name: 'l', unit: 'm'}, {name: 'I', unit: 'A'}],
+    retUnit: 'T',
+    func: function (inputs) {
+      var N = parseFloat(inputs[0]);
+      var l = parseFloat(inputs[1]);
+	  var I = parseFloat(inputs[2]);
+      var u = 1.2566371 * Math.pow(10,-6);
+      return (N * (u / l) * I);
     }
   }
 ];
