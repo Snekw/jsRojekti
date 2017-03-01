@@ -2,7 +2,6 @@ var funcs = [
   //Teho
   {
     name: 'P=U*I',
-    numVar: 2,
     group: 'Teho',
     inputs: [{name: 'U', unit: 'V'}, {name: 'I', unit: 'A'}],
     retUnit: 'W',
@@ -11,7 +10,6 @@ var funcs = [
     }
   }, {
     name: 'U=P/I',
-    numVar: 2,
     group: 'Teho',
     inputs: [{name: 'P', unit: 'W'}, {name: 'I', unit: 'A'}],
     retUnit: 'V',
@@ -20,7 +18,6 @@ var funcs = [
     }
   }, {
     name: 'I=P/U',
-    numVar: 2,
     group: 'Teho',
     inputs: [{name: 'P', unit: 'W'}, {name: 'U', unit: 'V'}],
     retUnit: 'A',
@@ -31,7 +28,6 @@ var funcs = [
   //Ohmin laki
   {
     name: 'U=R*I',
-    numVar: 2,
     group: 'Ohmin laki',
     inputs: [{name: 'R', unit: 'Ω'}, {name: 'I', unit: 'A'}],
     retUnit: 'V',
@@ -40,7 +36,6 @@ var funcs = [
     }
   }, {
     name: 'R=U/I',
-    numVar: 2,
     group: 'Ohmin laki',
     inputs: [{name: 'U', unit: 'V'}, {name: 'I', unit: 'A'}],
     retUnit: 'V',
@@ -49,7 +44,6 @@ var funcs = [
     }
   }, {
     name: 'I=U/R',
-    numVar: 2,
     group: 'Ohmin laki',
     inputs: [{name: 'U', unit: 'V'}, {name: 'R', unit: 'Ω'}],
     retUnit: 'A',
@@ -60,8 +54,7 @@ var funcs = [
   //Magneettivuon tiheys,
   {
     name: 'Suora virtajohdin B=(μ0/2*π*r)*I',
-    numVar: 2,
-    group: 'Magneettivuon tiheys',
+    group: 'Magneettivuon tiheys (B)',
     inputs: [{name: 'r', unit: 'm'}, {name: 'I', unit: 'A'}],
     retUnit: 'T',
     func: function (inputs) {
@@ -72,8 +65,7 @@ var funcs = [
     }
   },{
     name: 'Ympyräjohdin, keskipisteessä B=(μ0/2*r)*I',
-    numVar: 2,
-    group: 'Magneettivuon tiheys',
+    group: 'Magneettivuon tiheys (B)',
     inputs: [{name: 'r', unit: 'm'}, {name: 'I', unit: 'A'}],
     retUnit: 'T',
     func: function (inputs) {
@@ -84,8 +76,7 @@ var funcs = [
     }
   },{
     name: 'Pitkä käämi, sisällä B=N*(μ0/l)*I',
-    numVar: 2,
-    group: 'Magneettivuon tiheys',
+    group: 'Magneettivuon tiheys (B)',
     inputs: [{name: 'N', unit: 'kierr'}, {name: 'l', unit: 'm'}, {name: 'I', unit: 'A'}],
     retUnit: 'T',
     func: function (inputs) {
@@ -94,6 +85,16 @@ var funcs = [
 	  var I = parseFloat(inputs[2]);
       var u = 1.2566371 * Math.pow(10,-6);
       return (N * (u / l) * I);
+    }
+  },{
+    name: 'Magneettikentän voimakkuus H=B/μ0',
+    group: 'Magneettikentän voimakkuus (H)',
+    inputs: [{name: 'B', unit: 'T'}],
+    retUnit: 'A/m',
+    func: function (inputs) {
+      var B = parseFloat(inputs[0]);
+      var u = 1.2566371 * Math.pow(10,-6);
+      return (B/u);
     }
   }
 ];
