@@ -194,6 +194,30 @@ function selectChanged() {
     nInput.value = f.inputs[i].defVal || 0;
     nInput.className += 'form-control';
     nInput.id = 'n' + i;
+	
+	//Key filter for input box
+	nInput.addEventListener('keydown',function(e){
+		switch(e.keyCode){
+			case 8:  // Backspace
+			case 13: // Enter
+			case 46: // Delete
+			case 37: // Left arrow
+			case 39: // Right arrow
+			case 9:  // Tab
+			case e.ctrlKey && 67: // ctrl + c
+			case e.ctrlKey && 86: // ctrl + v
+				return true;
+		}
+		
+		// Numbers only
+		if(e.keyCode >= 48 && e.keyCode <= 57){
+			return true;
+		}else{
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		}
+	});
 
     //Add the elements in correct order
     nDiv.appendChild(nLabel);
