@@ -204,6 +204,8 @@ function selectChanged() {
 			case 37: // Left arrow
 			case 39: // Right arrow
 			case 9:  // Tab
+			case 188:  // ,
+			case 190:  // .
 			case e.ctrlKey && 67: // ctrl + c
 			case e.ctrlKey && 86: // ctrl + v
 				return true;
@@ -217,6 +219,12 @@ function selectChanged() {
 			e.preventDefault();
 			return false;
 		}
+	});
+	
+	// Handle copy paste
+	// Leave only numbers
+	nInput.addEventListener('change', function(e){
+		e.target.value = e.target.value.toString().replace(/(\D+)/g, "");
 	});
 
     //Add the elements in correct order
