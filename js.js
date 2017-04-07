@@ -224,7 +224,7 @@ function selectChanged() {
 	// Handle copy paste
 	// Leave only numbers
 	nInput.addEventListener('change', function(e){
-		e.target.value = e.target.value.toString().replace(/(\D+)/g, "");
+		e.target.value = e.target.value.toString().replace(/([^\d.,]+)/g, "");
 	});
 
     //Add the elements in correct order
