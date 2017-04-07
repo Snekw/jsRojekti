@@ -186,10 +186,10 @@ function selectChanged() {
     nDiv2.className += 'col-sm-8';
 
     nLabel.innerHTML = f.inputs[i].name + ':';
-    nLabel.className += 'col-sm-2 control-label';
+    nLabel.className += 'col-sm-2 control-label color1';
 
     nLabelUnit.innerHTML = f.inputs[i].unit || 'NA';
-    nLabelUnit.className += 'col-sm-2 control-label';
+    nLabelUnit.className += 'col-sm-2 control-label color1';
 
     nInput.value = f.inputs[i].defVal || 0;
     nInput.className += 'form-control';
