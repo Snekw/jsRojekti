@@ -4,6 +4,10 @@ html, body {
 	width: 100%;
 }
 
+.bg{
+	background: url("https://images4.alphacoders.com/246/246226.jpg");
+}
+
 .numbers{
 	margin: auto;
 	margin-top: 10px;
@@ -20,6 +24,7 @@ html, body {
 }
 
 .output textarea{
+	color: #575757;
 	margin: auto;
 	height: 100%;
 	width: 100%;
@@ -29,4 +34,8 @@ html, body {
 .col-centered{
     float: none;
     margin: 0 auto;
+}
+
+.color1{
+	color:#B7B7B8;
 }
