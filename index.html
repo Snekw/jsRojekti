@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>rojekti</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="main.css"/>
-	<script
-			  src="https://code.jquery.com/jquery-3.1.1.min.js"
-			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-			  crossorigin="anonymous"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rojekti</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css"/>
+  <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
 </head>
 <body class="bg">
-	<div id="numbers" class="numbers">
-		<!-- func selct -->
-		<div>
-			<select class="form-control" id="seleBox" onchange="selectChanged()">
-			</select>
-		</div><br/>
-		<form id="inputs" class="form-horizontal">
-		</form>
-	</div>
+  <div id="numbers" class="numbers">
+    <!-- func selct -->
+    <div>
+      <select class="form-control" id="seleBox" onchange="selectChanged();">
+      </select>
+    </div>
+    <br/>
+    <form id="inputs" class="form-horizontal">
+    </form>
+  </div>
 
-	<div id="output-div" class="col-sm-5 col-centered">
-		<textarea class="form-control" id="output" rows="9" cols="24" readonly></textarea>
-        <button class="btn btn-success" onclick="eval()">=</button>
-        <button class="btn btn-danger" onclick="sclear()">C</button>
-	</div>
-
-    <script src="js.js"></script>
+  <div id="output-div" class="col-sm-5 col-centered">
+    <textarea class="form-control" id="output" rows="9" cols="24" readonly></textarea>
+    <button class="btn btn-success" onclick="eval();">=</button>
+    <button class="btn btn-danger" onclick="sclear();">C</button>
+  </div>
+  <a href="https://github.com/Snekw/jsRojekti"><img style="position: absolute; top: 0; right: 0; border: 0;"
+                                                    src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67"
+                                                    alt="Fork me on GitHub"
+                                                    data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+  <script src="js.js"></script>
 </body>
 </html>
