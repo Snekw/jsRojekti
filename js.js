@@ -261,7 +261,7 @@ function eval () {
 }
 
 //Clear the output box
-function sclear () {
+function clearOutput () {
   document.getElementById('output').value = '';
 }
 
