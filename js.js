@@ -60,10 +60,10 @@ var funcs = [
     func: function (inputs) {
       var r = parseFloat(inputs[0]);
       var i = parseFloat(inputs[1]);
-      var u = 1.2566371 * Math.pow(10,-6);
+      var u = 1.2566371 * Math.pow(10, -6);
       return (u / (2 * Math.PI * r) * i);
     }
-  },{
+  }, {
     name: 'Ympyräjohdin, keskipisteessä B=(μ0/2*r)*I',
     group: 'Magneettivuon tiheys (B)',
     inputs: [{name: 'r', unit: 'm'}, {name: 'I', unit: 'A'}],
@@ -71,10 +71,10 @@ var funcs = [
     func: function (inputs) {
       var r = parseFloat(inputs[0]);
       var i = parseFloat(inputs[1]);
-      var u = 1.2566371 * Math.pow(10,-6);
+      var u = 1.2566371 * Math.pow(10, -6);
       return (u / (2 * r) * i);
     }
-  },{
+  }, {
     name: 'Pitkä käämi, sisällä B=N*(μ0/l)*I',
     group: 'Magneettivuon tiheys (B)',
     inputs: [{name: 'N', unit: 'kierr'}, {name: 'l', unit: 'm'}, {name: 'I', unit: 'A'}],
@@ -82,19 +82,19 @@ var funcs = [
     func: function (inputs) {
       var N = parseFloat(inputs[0]);
       var l = parseFloat(inputs[1]);
-	  var I = parseFloat(inputs[2]);
-      var u = 1.2566371 * Math.pow(10,-6);
+      var I = parseFloat(inputs[2]);
+      var u = 1.2566371 * Math.pow(10, -6);
       return (N * (u / l) * I);
     }
-  },{
+  }, {
     name: 'Magneettikentän voimakkuus H=B/μ0',
     group: 'Magneettikentän voimakkuus (H)',
     inputs: [{name: 'B', unit: 'T'}],
     retUnit: 'A/m',
     func: function (inputs) {
       var B = parseFloat(inputs[0]);
-      var u = 1.2566371 * Math.pow(10,-6);
-      return (B/u);
+      var u = 1.2566371 * Math.pow(10, -6);
+      return (B / u);
     }
   }
 ];
@@ -108,7 +108,6 @@ var output = document.getElementById('output');
 
 //Group array used for creation of inputs
 var groups = [];
-
 
 //Loop through all of the functions and categorize them
 for (var i = 0; i < funcs.length; i++) {
@@ -141,11 +140,11 @@ for (var i = 0; i < funcs.length; i++) {
 //Create option groups and options for the selection box
 for (var i = 0; i < groups.length; i++) {
   //Create a new group
-  var nGroup = document.createElement("optgroup");
+  var nGroup = document.createElement('optgroup');
   nGroup.label = groups[i].name;
   //Create options inside the group
   for (var d = 0; d < groups[i].funcs.length; d++) {
-    var nOpt = document.createElement("option");
+    var nOpt = document.createElement('option');
     nOpt.value = groups[i].funcs[d].name;
     nOpt.innerHTML = groups[i].funcs[d].name;
     nGroup.appendChild(nOpt);
@@ -155,7 +154,7 @@ for (var i = 0; i < groups.length; i++) {
 }
 
 //Get the function object associated with the selected function
-function getSelectedFunction() {
+function getSelectedFunction () {
   var f = {};
   var ele = seleBox;
   //Go trough the available functions and 
@@ -168,10 +167,10 @@ function getSelectedFunction() {
   return f;
 }
 
-function selectChanged() {
+function selectChanged () {
   var f = getSelectedFunction();
   //Delete old input boxes
-  inputs.innerHTML = "";
+  inputs.innerHTML = '';
   //Generate new input boxes
   for (var i = 0; i < f.inputs.length; i++) {
     //The elements we need to show the inputs
@@ -194,38 +193,38 @@ function selectChanged() {
     nInput.value = f.inputs[i].defVal || 0;
     nInput.className += 'form-control';
     nInput.id = 'n' + i;
-	
-	//Key filter for input box
-	nInput.addEventListener('keydown',function(e){
-		switch(e.keyCode){
-			case 8:  // Backspace
-			case 13: // Enter
-			case 46: // Delete
-			case 37: // Left arrow
-			case 39: // Right arrow
-			case 9:  // Tab
-			case 188:  // ,
-			case 190:  // .
-			case e.ctrlKey && 67: // ctrl + c
-			case e.ctrlKey && 86: // ctrl + v
-				return true;
-		}
-		
-		// Numbers only
-		if(e.keyCode >= 48 && e.keyCode <= 57){
-			return true;
-		}else{
-			e.stopPropagation();
-			e.preventDefault();
-			return false;
-		}
-	});
-	
-	// Handle copy paste
-	// Leave only numbers
-	nInput.addEventListener('change', function(e){
-		e.target.value = e.target.value.toString().replace(/(\D+)/g, "");
-	});
+
+    //Key filter for input box
+    nInput.addEventListener('keydown', function (e) {
+      switch (e.keyCode) {
+        case 8:  // Backspace
+        case 13: // Enter
+        case 46: // Delete
+        case 37: // Left arrow
+        case 39: // Right arrow
+        case 9:  // Tab
+        case 188:  // ,
+        case 190:  // .
+        case e.ctrlKey && 67: // ctrl + c
+        case e.ctrlKey && 86: // ctrl + v
+          return true;
+      }
+
+      // Numbers only
+      if (e.keyCode >= 48 && e.keyCode <= 57) {
+        return true;
+      } else {
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Handle copy paste
+    // Leave only numbers
+    nInput.addEventListener('change', function (e) {
+      e.target.value = e.target.value.toString().replace(/([^\d.,]+)/g, '');
+    });
 
     //Add the elements in correct order
     nDiv.appendChild(nLabel);
@@ -242,7 +241,7 @@ function selectChanged() {
   }
 }
 
-function eval() {
+function eval () {
   var f = getSelectedFunction();
 
   var inputs = [];
@@ -262,7 +261,7 @@ function eval() {
 }
 
 //Clear the output box
-function sclear() {
+function clearOutput () {
   document.getElementById('output').value = '';
 }
 
