@@ -5,7 +5,9 @@ html, body {
 }
 
 .bg{
-	background: url("https://images4.alphacoders.com/246/246226.jpg");
+	background: url("Background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .numbers{
